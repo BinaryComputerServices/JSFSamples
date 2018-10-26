@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+<application>
+		 <state-manager>
+		com.ibm.faces.application.DevelopmentStateManager</state-manager>
+		<property-resolver>
+		com.ibm.faces.databind.SelectItemsPropResolver</property-resolver>
+		<variable-resolver>
+		com.ibm.faces.databind.SelectItemsVarResolver</variable-resolver>
+	</application>
+	<factory>
+			<faces-context-factory>
+			com.ibm.faces.context.AjaxFacesContextFactory</faces-context-factory>
+			<render-kit-factory>
+			com.ibm.faces.renderkit.AjaxRenderKitFactory</render-kit-factory>
+	</factory>
+ 	<lifecycle>
+		<phase-listener>com.ibm.faces.webapp.ValueResourcePhaseListener</phase-listener>		
+	</lifecycle>
+ 	<navigation-rule>
+		<from-view-id>*</from-view-id>
+			<navigation-case>
+				<from-outcome>welcome</from-outcome>
+				<to-view-id>/welcome/welcome.jsp</to-view-id>
+				<redirect/>
+			</navigation-case>
+	</navigation-rule>
+</faces-config>
