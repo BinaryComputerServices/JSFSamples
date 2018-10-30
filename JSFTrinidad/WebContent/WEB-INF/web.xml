@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>JSFTrinidad</display-name>
+	<welcome-file-list>
+		<welcome-file>welcome/welcome.faces</welcome-file>
+	</welcome-file-list>
+	<context-param>
+      	<param-name>javax.faces.CONFIG_FILES</param-name>
+      	<param-value>/WEB-INF/faces-config.xml</param-value>
+   	</context-param>
+    <!-- <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>server</param-value>
+    </context-param>-->
+        <context-param>
+        <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+        <param-value>client</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.faces</url-pattern>
+    </servlet-mapping>
+   
+   
+   <!-- Trinidad configuration --> 
+      <filter>
+    <filter-name>trinidad</filter-name>
+    <filter-class>org.apache.myfaces.trinidad.webapp.TrinidadFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>trinidad</filter-name>
+    <!-- This assumes that the FacesServlet has been registered -->
+    <!-- under the name "faces" -->
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+    
+     <servlet>
+  <servlet-name>resources</servlet-name>
+  <servlet-class>org.apache.myfaces.trinidad.webapp.ResourceServlet</servlet-class>
+ </servlet>
+
+<!-- This cannot be configured currently -->
+<servlet-mapping>
+    <servlet-name>resources</servlet-name>
+    <url-pattern>/adf/*</url-pattern>
+</servlet-mapping>
+    
+</web-app>
